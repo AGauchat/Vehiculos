@@ -1,0 +1,78 @@
+﻿@model Vehiculos.Models.Vehiculos
+
+@{
+    ViewBag.Title = "Alta vehículo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Alta vehículo</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Vehiculos</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Patente</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Patente, new { htmlAttributes = new { @class = "form-control", @maxlength = "8" } })
+                @Html.ValidationMessageFor(model => model.Patente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Marca</label>
+            <div class="col-md-10">
+                @Html.Action("ComboMarcas", "Marcas")
+                @Html.ValidationMessageFor(model => model.IDMarca, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Modelo</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Dueño</label>
+            <div class="col-md-10">
+                <input name="Dueño" id="Dueño" style="display:none" />
+                @Html.Action("GetNombres", "Vehiculos", new { pages = 3 })
+                @Html.ValidationMessageFor(model => model.Dueño, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Puertas</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Puertas, new { htmlAttributes = new { @class = "form-control", @min = "2" } })
+                @Html.ValidationMessageFor(model => model.Puertas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Volver", "Index", new { },
+                        new { @class = "btn btn-default btn-sm" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/crearNombre.js"></script>
+}
+

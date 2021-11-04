@@ -1,0 +1,8 @@
+﻿@model List<Vehiculos.Models.Marcas>
+
+<select id="IDMarca" name="IDMarca" class="form-control">
+    @foreach (var marca in Model)
+    {
+        <option value="@marca.Id">@marca.Marca</option>
+    }
+</select>

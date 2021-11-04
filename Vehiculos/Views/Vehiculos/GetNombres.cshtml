@@ -1,0 +1,19 @@
+﻿@model List<Vehiculos.Controllers.Services.Data>
+
+<select id="Nombre" name="Nombre" class="form-control">
+    @foreach (var persona in Model)
+    {
+
+        <option value="@persona.first_name">@persona.first_name</option>
+    }
+</select>
+
+<br />
+
+<select id="Apellido" name="Apellido" class="form-control">
+    @foreach (var persona in Model)
+    {
+
+        <option value="@persona.last_name">@persona.last_name</option>
+    }
+</select>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Vehiculos.Models.Views.VehiculosView>
+
+@{
+    ViewBag.Title = "Vehículos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vehículos</h2>
+
+<p>
+    <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Create", "Vehiculos")'">Alta vehículo</button>
+</p>
+
+<table class="table table-striped table-bordered table-condensed" id="tabla">
+    <tr style="background-color:#B8B8B8">
+        <th>
+            @Html.DisplayNameFor(model => model.Patente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dueño)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puertas)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dueño)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puertas)
+            </td>
+        </tr>
+    }
+
+</table>
