@@ -11,13 +11,10 @@ namespace Vehiculos.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Vehiculos
     {
         public long Id { get; set; }
-        [MaxLength(8)]
         public string Patente { get; set; }
         public long IDMarca { get; set; }
         public string Modelo { get; set; }
